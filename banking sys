@@ -1,0 +1,77 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class bank {
+public:
+    string name;
+    string type = "Savings";
+    int no;
+    int bal = 0;
+
+    void get() {
+        cout << "Enter your name" << endl;
+        cin >> name;
+        cout << "Your acc. type will be savings" << endl;
+        cout << "Enter a 5 digit number for your acc." << endl;
+        cin >> no;
+        cout << "Your acc is set up and balance is 0" << endl;
+    }
+
+    void deposit() {
+        int depo;
+        cout << "Enter amt to deposit" << endl;
+        cin >> depo;
+        bal = bal + depo;
+        cout << "Updated balance = " << bal << endl;
+    }
+
+    void withdraw() {
+        int wd;
+        cout << "Enter amt to withdraw" << endl;
+        cin >> wd;
+        if (wd > bal) {
+            cout << "Insufficient balance!" << endl;
+        } else {
+            bal = bal - wd;
+            cout << "Updated balance = " << bal << endl;
+        }
+    }
+
+    void disp() {
+        cout << "Name = " << name << endl;
+        cout << "Type = " << type << endl;
+        cout << "Account Number = " << no << endl;
+        cout << "Balance = " << bal << endl;
+    }
+};
+
+int main() {
+    bank user_1;
+    cout << "Setup your acc" << endl;
+    user_1.get();
+
+    int a = 5;
+    while (a == 5) {
+        cout << "\nChoose what you want to do" << endl;
+        cout << "1. Deposit" << endl;
+        cout << "2. Withdraw" << endl;
+        cout << "3. Details" << endl;
+        cin >> a;
+
+        if (a == 1) {
+            user_1.deposit();
+        } else if (a == 2) {
+            user_1.withdraw();
+        } else if (a == 3) {
+            user_1.disp();
+        } else {
+            cout << "Wrong choice" << endl;
+        }
+
+        cout << "\nPress 6 to exit and 5 to choose options again" << endl;
+        cin >> a;
+    }
+
+    return 0;
+}
