@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class city {
+public:
+    string name;
+    int temp[3][7];
+    void get_data();
+    void average();
+    void disp();
+    int sum = 0;
+    int avg = 0;
+};
+
+void city::get_data() {
+	int a = 0;
+	for(a=0; a < 3; a++){
+    cout << "Enter temp for week:" << a+1<< endl;
+    for (int i = 0; i < 7; i++) {
+        cout << "Day " << i + 1 << ": ";
+        cin >> temp[a][i];
+        cout << endl;
+    }
+}
+}
+
+void city::average() {
+    sum = 0;
+    for (int i = 0; i < 7; i++) {
+        sum = sum + temp[1][i];
+    }
+    avg = (sum) / 7;
+    cout << "Average temperature: " << avg << endl;
+}
+
+void city::disp() {
+    cout << "\t";  
+    for (int d = 0; d < 7; d++) {
+        cout << "Day " << d + 1 << "\t";
+    }
+    cout << endl;
+
+    for (int b = 0; b < 3; b++) {
+        cout << "Week " << b + 1 << "\t";
+        for (int d = 0; d < 7; d++) {
+            cout << temp[b][d] << "\t";
+        }
+        cout << endl;
+    }
+}
+
+
+int main() {
+    int c;
+    cout << "Enter no. of cities:" << endl;
+    cin >> c;
+    city cities[c];
+    for (int k = 0; k < c; k++) {
+        cities[k].get_data();
+        cities[k].disp();
+        cities[k].average();
+    }
+    return 0;
+}
+
